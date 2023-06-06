@@ -1,5 +1,5 @@
 import { Trending, Tech, Travel } from "./(home)";
-import { Other, Subscribe } from "./(shared)";
+import { Other, Sidebar, Subscribe } from "./(shared)";
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
           </div>
         </div>
         <div className="basis-1/4" >
-          {/* <Sidebar /> */}
+          <Sidebar />
         </div>
       </div>
     </main>
