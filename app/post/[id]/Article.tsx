@@ -18,7 +18,7 @@ const Article = ({
   setContent,
   title,
 }: Props) => {
-  const [role, setRole] = useState<string>("I am  a helpful assistant.");
+  const [role, setRole] = useState<string>("I am a helpful assistant.");
 
   if (!editor) {
     return null;
@@ -28,7 +28,7 @@ const Article = ({
     editor
       .chain()
       .focus()
-      .setContent("Generating AI content, please wait...")
+      .setContent("Generating Ai Content. Please Wait...")
       .run();
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/openai`, {
@@ -51,7 +51,7 @@ const Article = ({
       {isEditable && (
         <div className="border-2 rounded-md bg-wh-50 p-3 mb-3">
           <h4 className="m-0 p-0">Generate AI Content</h4>
-          <p className="my-1 p-0 text-xs">What type of write do you want?</p>
+          <p className="my-1 p-0 text-xs">What type of writer do you want?</p>
           <div className="flex gap-5 justify-between">
             <input
               className="border-2 rounded-md bg-wh-50 px-3 py-1 w-full"
@@ -65,6 +65,7 @@ const Article = ({
           </div>
         </div>
       )}
+
       <div
         className={
           isEditable ? "border-2 rounded-md bg-wh-50 p-3" : "w-full max-w-full"
@@ -78,7 +79,7 @@ const Article = ({
         )}
         <EditorContent editor={editor} />
       </div>
-      {contentError && <p className="mt-1 text-wh-900"> {contentError}</p>}
+      {contentError && <p className="mt-1 text-wh-900">{contentError}</p>}
     </article>
   );
 };

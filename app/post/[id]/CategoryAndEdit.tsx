@@ -15,7 +15,7 @@ type Props = {
   post: FormattedPost;
 };
 
-const ContentAndEdit = ({
+const CategoryAndEdit = ({
   isEditable,
   handleIsEditable,
   title,
@@ -24,8 +24,8 @@ const ContentAndEdit = ({
   setTempTitle,
   tempContent,
   setTempContent,
-  post,
   editor,
+  post,
 }: Props) => {
   const handleEnableEdit = () => {
     handleIsEditable(!isEditable);
@@ -41,7 +41,7 @@ const ContentAndEdit = ({
 
   return (
     <div className="flex justify-between items-center">
-      <h4 className="bg-accent-orange py-2 px-5 text-wh-900 text-sm font-bold">
+      <h4 className="bg-accent-orange py-2 px-5 tex-wh-900 text-sm font-bold">
         {post.category}
       </h4>
       <div className="mt-4">
@@ -61,4 +61,4 @@ const ContentAndEdit = ({
   );
 };
 
-export default ContentAndEdit;
+export default CategoryAndEdit;

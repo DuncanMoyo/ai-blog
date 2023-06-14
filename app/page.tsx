@@ -5,41 +5,20 @@ import { prisma } from "./api/client";
 
 export const revalidate = 60;
 
-// const getPosts = async () => {
-//   const posts = await prisma.post.findMany();
-
-//   const formattedPosts = await Promise.all(
-//     posts.map(async (post: Post) => {
-//       const imageModule = require(`../public${post.image}`);
-//       return {
-//         ...post,
-//         image: imageModule.default,
-//       };
-//     })
-//   );
-//   return formattedPosts;
-// };
-
 const getPosts = async () => {
-  try {
-    const posts = await prisma.post.findMany();
+  const posts = await prisma.post.findMany();
 
-    const formattedPosts = await Promise.all(
-      posts.map(async (post) => {
-        const imageModule = require(`../public${post.image}`);
-        return {
-          ...post,
-          image: imageModule.default,
-        };
-      })
-    );
+  const formattedPosts = await Promise.all(
+    posts.map(async (post: Post) => {
+      const imageModule = require(`../public${post.image}`);
+      return {
+        ...post,
+        image: imageModule.default,
+      };
+    })
+  );
 
-    return formattedPosts;
-  } catch (error) {
-    // Handle the error
-    console.error("Error retrieving posts:", error);
-    throw error; // Rethrow the error to be handled by the caller
-  }
+  return formattedPosts;
 };
 
 export default async function Home() {
@@ -63,6 +42,7 @@ export default async function Home() {
         otherPosts.push(post);
       }
     });
+
     return [trendingPosts, techPosts, travelPosts, otherPosts];
   };
 

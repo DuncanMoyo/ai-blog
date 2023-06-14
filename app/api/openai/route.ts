@@ -7,7 +7,7 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-export async function POST(request: Request) {
+export async function POST(request: Request, response: any) {
   try {
     const { title, role } = await request.json();
 
@@ -29,6 +29,7 @@ export async function POST(request: Request) {
         ],
       });
 
+    // response.revalidate("/api/posts")
     return NextResponse.json(
       {
         content: aiResponse.data.choices[0].message?.content,
